@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const DepositSchema = new Schema(
+const ContactSchema = new Schema(
   {
     name: {
       type: String,
@@ -15,6 +15,6 @@ const DepositSchema = new Schema(
   { timestamps: true }
 );
 
-const Deposit = mongoose.model("Deposit", DepositSchema);
+const Deposit = mongoose.model("Contacts", ContactSchema);
 
 module.exports = Deposit;

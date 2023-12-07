@@ -8,6 +8,12 @@ require("dotenv").config();
 const admin = require("./routers/admin");
 const config = require("./utils/config");
 const errorHandler = require("./middleware/error");
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
 
 app.set("view engine", "ejs");
 app.use(express.json());
@@ -30,6 +36,7 @@ app.post("*", function (req, res, next) {
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(corsOptions)) // Use this after the variable declaration
 app.use("/tarvixxx", express.static("adminpublic"), admin);
 app.use(errorHandler);
 mongoose.connect(config.MONGO_URI, {
